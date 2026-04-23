@@ -26,7 +26,7 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
 background-size:cover;
 background-position:center;
 padding-top:100px;
@@ -42,6 +42,21 @@ opacity:0;
 transform:translateY(20px);
 animation:fadeUp 1s ease forwards;
 animation-delay:0.8s;
+text-shadow:0 2px 12px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
+line-height:1.3;
+}
+
+.hero-sub{
+font-size:14px;
+font-weight:400;
+color:rgba(255,255,255,0.85);
+text-align:center;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1s ease forwards;
+animation-delay:1.1s;
+text-shadow:0 1px 6px rgba(0,0,0,0.8);
+letter-spacing:0.5px;
 }
 
 @keyframes fadeUp{
@@ -357,6 +372,7 @@ border-radius:50%;background:#38bdf8;cursor:pointer;
 
 <section class="hero">
 <h2 class="hero-title">ENCUENTRA TU PROPIEDAD IDEAL CON NOSOTROS</h2>
+<p class="hero-sub">Tu equipo de confianza en bienes raíces</p>
 <div class="buttons">
 <button class="btn active" onclick="setType('all',this)">Ver todo</button>
 <button class="btn" onclick="setType('arriendo',this)">Arrendar</button>
