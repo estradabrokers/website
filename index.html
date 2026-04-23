@@ -19,7 +19,6 @@ backdrop-filter:blur(10px);
 z-index:1000;
 }
 
-/* HERO */
 .hero{
 height:70vh;
 display:flex;
@@ -34,7 +33,6 @@ padding-top:100px;
 gap:25px;
 }
 
-/* NUEVA LEYENDA */
 .hero-title{
 font-size:28px;
 font-weight:700;
@@ -47,10 +45,7 @@ animation-delay:0.8s;
 }
 
 @keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
+to{opacity:1;transform:translateY(0);}
 }
 
 .buttons{
@@ -75,7 +70,6 @@ border:2px solid white;color:white;
 box-shadow:0 0 15px rgba(255,255,255,0.3);
 }
 
-/* FILTRO */
 .filters{text-align:center;margin:20px;}
 
 .price-wrapper{
@@ -84,9 +78,7 @@ background:white;border-radius:12px;
 padding:6px 12px;color:black;gap:6px;
 }
 
-.currency,.cop{
-font-weight:700;
-}
+.currency,.cop{font-weight:700;}
 
 .price-wrapper input{
 border:none;outline:none;
@@ -94,13 +86,27 @@ width:120px;text-align:center;
 font-weight:600;
 }
 
-/* PROPERTIES */
 .container{padding:40px;}
 
 .properties{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
+}
+
+/* Loading y empty state */
+.state-msg{
+text-align:center;
+padding:60px 20px;
+color:rgba(255,255,255,0.5);
+font-size:16px;
+grid-column:1/-1;
+}
+.state-msg i{
+display:block;
+font-size:40px;
+margin-bottom:12px;
+color:#38bdf8;
 }
 
 .card{
@@ -119,7 +125,7 @@ box-shadow:0 20px 40px rgba(0,0,0,0.6);
 
 .slider{position:relative;height:200px;overflow:hidden;}
 .slides{display:flex;transition:transform 0.5s;}
-.slide{min-width:100%;overflow:hidden;}
+.slide{min-width:100%;overflow:hidden;position:relative;}
 
 .slide img,.slide video{
 width:100%;height:200px;object-fit:cover;
@@ -127,13 +133,9 @@ transition:transform 0.4s ease;
 cursor:pointer;
 }
 
-.card:hover img,.card:hover video{
-transform:scale(1.05);
-}
+.card:hover img,.card:hover video{transform:scale(1.05);}
 
-/* Icono play sobre video en card */
-.slide{position:relative;}
-.play-overlay-icon{
+.expand-icon{
 position:absolute;
 top:50%;left:50%;
 transform:translate(-50%,-50%);
@@ -144,60 +146,116 @@ display:flex;align-items:center;justify-content:center;
 pointer-events:none;
 transition:opacity 0.3s;
 }
-.play-overlay-icon i{
-color:white;font-size:20px;margin-left:3px;
+.expand-icon i{color:white;font-size:18px;}
+.slide:hover .expand-icon{opacity:0;}
+
+/* Thumbnail de video en card */
+.video-thumb-slide{
+height:200px;
+background:linear-gradient(135deg,#0f2744,#1e3a5f);
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;
 }
-.slide:hover .play-overlay-icon{
-opacity:0;
+.video-thumb-box{
+display:flex;flex-direction:column;
+align-items:center;gap:10px;
+transition:transform 0.3s;
+}
+.video-thumb-slide:hover .video-thumb-box{transform:scale(1.1);}
+.video-thumb-icon{
+font-size:42px;color:#38bdf8;
+}
+.video-thumb-label{
+font-size:13px;font-weight:600;
+color:rgba(255,255,255,0.8);
+letter-spacing:0.5px;
 }
 
-/* FLECHAS */
 .arrow{
 position:absolute;top:50%;transform:translateY(-50%);
 background:rgba(0,0,0,0.6);
 color:white;border:none;padding:8px;
-cursor:pointer;
-z-index:2;
+cursor:pointer;z-index:2;
 }
 
-/* DOTS */
 .dots{
-position:absolute;
-bottom:10px;
-width:100%;
-text-align:center;
+position:absolute;bottom:10px;width:100%;text-align:center;
 }
 
 .dot{
-height:8px;width:8px;
-margin:0 4px;
-background:white;
-border-radius:50%;
-display:inline-block;
-opacity:0.4;
-cursor:pointer;
-transition:all 0.3s;
+height:8px;width:8px;margin:0 4px;
+background:white;border-radius:50%;
+display:inline-block;opacity:0.4;
+cursor:pointer;transition:all 0.3s;
 }
 
 .dot.active{opacity:1;transform:scale(1.3);}
 
 .card-content{padding:15px;}
-.price{color:#38bdf8;font-weight:600;}
+
+.card-content h3{
+font-size:16px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+.card-meta{
+display:flex;align-items:center;gap:8px;
+margin-bottom:10px;
+}
+
+.card-badge{
+font-size:11px;font-weight:700;
+padding:3px 10px;border-radius:20px;
+text-transform:uppercase;letter-spacing:0.5px;
+}
+.badge-arriendo{background:rgba(56,189,248,0.2);color:#38bdf8;border:1px solid rgba(56,189,248,0.4);}
+.badge-compra  {background:rgba(52,211,153,0.2);color:#34d399;border:1px solid rgba(52,211,153,0.4);}
+.badge-lote    {background:rgba(251,191,36,0.2); color:#fbbf24;border:1px solid rgba(251,191,36,0.4);}
+
+.price{
+color:#38bdf8;font-weight:700;font-size:16px;
+}
+
+.card-divider{
+border:none;
+border-top:1px solid rgba(255,255,255,0.08);
+margin:10px 0;
+}
+
+.card-description{
+font-size:13px;
+color:rgba(255,255,255,0.7);
+line-height:1.6;
+display:flex;
+gap:7px;
+align-items:flex-start;
+}
+.card-description i{
+color:#38bdf8;
+font-size:13px;
+margin-top:2px;
+flex-shrink:0;
+}
+
+.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
 
 .action-btn{
-display:inline-block;margin-top:8px;
-padding:8px 15px;
+display:inline-flex;align-items:center;gap:5px;
+padding:7px 13px;
 background:#38bdf8;border-radius:15px;
-text-decoration:none;color:white;
+text-decoration:none;color:white;font-size:13px;
 transition:all 0.25s ease;
 }
 
+.action-btn.whatsapp{background:#25d366;}
+.action-btn.location{background:#334155;}
+
 .action-btn:hover{
 transform:translateY(-3px) scale(1.05);
-box-shadow:0 0 15px rgba(255,255,255,0.6);
+box-shadow:0 0 15px rgba(255,255,255,0.3);
 }
 
-/* CONTACTO */
 .contact{
 text-align:center;padding:40px;background:#020617;
 }
@@ -219,88 +277,56 @@ transform:translateY(-3px) scale(1.05);
 text-shadow:0 5px 15px rgba(255,255,255,0.4);
 }
 
-/* ==============================
-   VISOR UNIFICADO (img + video)
-   ============================== */
+/* VISOR */
 .viewer{
-position:fixed;
-top:0;left:0;
+position:fixed;top:0;left:0;
 width:100%;height:100%;
 background:rgba(0,0,0,0.92);
 display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-overflow:hidden;
+justify-content:center;align-items:center;
+z-index:9999;overflow:hidden;
 touch-action:none;
 }
 
-.viewer.active{
-display:flex;
-}
+.viewer.active{display:flex;}
 
-/* Botón cerrar */
 .viewer-close{
-position:absolute;
-top:16px;right:20px;
+position:absolute;top:16px;right:20px;
 background:rgba(255,255,255,0.15);
-border:none;color:white;
-font-size:22px;
-width:40px;height:40px;
-border-radius:50%;
-cursor:pointer;
-display:flex;align-items:center;justify-content:center;
-z-index:10001;
-transition:background 0.2s;
+border:none;color:white;font-size:22px;
+width:40px;height:40px;border-radius:50%;
+cursor:pointer;display:flex;align-items:center;justify-content:center;
+z-index:10001;transition:background 0.2s;
 }
 .viewer-close:hover{background:rgba(255,255,255,0.3);}
 
-/* Contenedor del medio en el visor */
 .viewer-media-wrap{
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-width:100%;
-height:100%;
+position:relative;display:flex;
+align-items:center;justify-content:center;
+width:100%;height:100%;
 }
 
-/* Imagen en visor */
 #viewerImg{
-max-width:none;
-max-height:none;
-cursor:grab;
-transform-origin:center;
-user-select:none;
--webkit-user-drag:none;
+max-width:none;max-height:none;
+cursor:grab;transform-origin:center;
+user-select:none;-webkit-user-drag:none;
 display:block;
 }
 #viewerImg:active{cursor:grabbing;}
 
-/* Video en visor */
 #viewerVideo{
-max-width:90vw;
-max-height:85vh;
-border-radius:10px;
-outline:none;
-display:none;
-background:#000;
+max-width:90vw;max-height:85vh;
+border-radius:10px;outline:none;
+display:none;background:#000;
 }
 
-/* Controles personalizados del video en visor */
 .video-controls{
-position:absolute;
-bottom:20px;
-left:50%;
+position:absolute;bottom:20px;left:50%;
 transform:translateX(-50%);
-display:none;
-align-items:center;
-gap:14px;
+display:none;align-items:center;gap:14px;
 background:rgba(0,0,0,0.6);
-padding:10px 18px;
-border-radius:30px;
-backdrop-filter:blur(6px);
-z-index:10002;
+padding:10px 18px;border-radius:30px;
+backdrop-filter:blur(6px);z-index:10002;
 }
 
 .video-controls button{
@@ -308,31 +334,20 @@ background:none;border:none;color:white;
 font-size:18px;cursor:pointer;
 transition:transform 0.2s,color 0.2s;
 }
-.video-controls button:hover{
-transform:scale(1.2);color:#38bdf8;
-}
+.video-controls button:hover{transform:scale(1.2);color:#38bdf8;}
 
 .video-progress{
 width:160px;height:4px;
-appearance:none;
--webkit-appearance:none;
+appearance:none;-webkit-appearance:none;
 background:rgba(255,255,255,0.3);
-border-radius:2px;
-cursor:pointer;
-outline:none;
+border-radius:2px;cursor:pointer;outline:none;
 }
 .video-progress::-webkit-slider-thumb{
--webkit-appearance:none;
-width:14px;height:14px;
-border-radius:50%;
-background:#38bdf8;
-cursor:pointer;
+-webkit-appearance:none;width:14px;height:14px;
+border-radius:50%;background:#38bdf8;cursor:pointer;
 }
 
-.video-time{
-font-size:12px;color:rgba(255,255,255,0.8);
-white-space:nowrap;
-}
+.video-time{font-size:12px;color:rgba(255,255,255,0.8);white-space:nowrap;}
 </style>
 </head>
 
@@ -342,7 +357,6 @@ white-space:nowrap;
 
 <section class="hero">
 <h2 class="hero-title">ENCUENTRA TU PROPIEDAD IDEAL CON NOSOTROS</h2>
-
 <div class="buttons">
 <button class="btn active" onclick="setType('all',this)">Ver todo</button>
 <button class="btn" onclick="setType('arriendo',this)">Arrendar</button>
@@ -359,7 +373,9 @@ white-space:nowrap;
 <span class="cop">COP</span>
 </div>
 </div>
-<div class="properties" id="properties"></div>
+<div class="properties" id="properties">
+<div class="state-msg"><i class="fas fa-spinner fa-spin"></i>Cargando propiedades...</div>
+</div>
 </section>
 
 <section class="contact">
@@ -374,397 +390,448 @@ white-space:nowrap;
 </div>
 </section>
 
-<!-- VISOR UNIFICADO -->
+<!-- VISOR -->
 <div class="viewer" id="viewer">
-  <button class="viewer-close" id="viewerClose"><i class="fas fa-times"></i></button>
-
-  <div class="viewer-media-wrap" id="viewerMediaWrap">
-    <!-- Imagen -->
-    <img id="viewerImg" src="" alt="">
-
-    <!-- Video -->
-    <video id="viewerVideo" playsinline></video>
-
-    <!-- Controles video -->
-    <div class="video-controls" id="videoControls">
-      <button id="vcPlayPause"><i class="fas fa-pause"></i></button>
-      <input type="range" class="video-progress" id="vcProgress" value="0" min="0" step="0.01">
-      <span class="video-time" id="vcTime">0:00</span>
-      <button id="vcMute"><i class="fas fa-volume-up"></i></button>
-      <button id="vcFullscreen"><i class="fas fa-expand"></i></button>
-    </div>
-  </div>
+<button class="viewer-close" id="viewerClose"><i class="fas fa-times"></i></button>
+<div class="viewer-media-wrap" id="viewerMediaWrap">
+<img id="viewerImg" src="" alt="">
+<video id="viewerVideo" playsinline></video>
+<div class="video-controls" id="videoControls">
+<button id="vcPlayPause"><i class="fas fa-pause"></i></button>
+<input type="range" class="video-progress" id="vcProgress" value="0" min="0" step="0.01">
+<span class="video-time" id="vcTime">0:00</span>
+<button id="vcMute"><i class="fas fa-volume-up"></i></button>
+<button id="vcFullscreen"><i class="fas fa-expand"></i></button>
+</div>
+</div>
 </div>
 
 <script>
-let currentType="all";
-let intervals=[];
+/* =============================================
+   CONFIGURACIÓN
+   ============================================= */
+const JSON_URL = "assets/data/properties.json"; // ruta al JSON
 
-const properties=[
-{type:"arriendo",price:1200000,title:"Casa en arriendo",location:"bogota",
-media:["https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=800&q=80","video"]},
-{type:"compra",price:350000000,title:"Casa en venta",location:"medellin",
-media:["https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80","video"]},
-{type:"lote",price:90000000,title:"Lote disponible",location:"cali",
-media:["https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
-"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80","video"]}
-];
+/* =============================================
+   ESTADO GLOBAL
+   ============================================= */
+let allProperties = [];
+let currentType   = "all";
+let intervals     = [];
 
-function formatNumber(num){
-return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+/* =============================================
+   INICIO — cargar JSON
+   ============================================= */
+async function loadProperties() {
+  try {
+    const res = await fetch(JSON_URL);
+    if (!res.ok) throw new Error("No se pudo cargar el JSON");
+    allProperties = await res.json();
+    render();
+  } catch (err) {
+    document.getElementById("properties").innerHTML =
+      `<div class="state-msg">
+        <i class="fas fa-exclamation-triangle" style="color:#f87171"></i>
+        Error cargando propiedades.<br>
+        <small style="font-size:12px;opacity:0.6;">${err.message}</small>
+      </div>`;
+    console.error(err);
+  }
 }
 
-const input=document.getElementById("maxPrice");
-input.addEventListener("input",()=>{
-let val=input.value.replace(/[^0-9]/g,'');
-input.value=formatNumber(val);
-render();
+/* =============================================
+   UTILIDADES
+   ============================================= */
+function formatNumber(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function isVideo(url) {
+  // Detecta videos por extensión; todo lo demás se trata como imagen (jpg, png, webp, avif, gif, etc.)
+  return /\.(mp4|webm|ogg|mov|m4v|avi|mkv)(\?.*)?$/i.test(url);
+}
+
+function fmtTime(s) {
+  const m   = Math.floor(s / 60);
+  const sec = Math.floor(s % 60).toString().padStart(2, "0");
+  return `${m}:${sec}`;
+}
+
+/* =============================================
+   FILTRO DE PRECIO
+   ============================================= */
+const input = document.getElementById("maxPrice");
+input.addEventListener("input", () => {
+  const val = input.value.replace(/[^0-9]/g, "");
+  input.value = formatNumber(val);
+  render();
 });
 
-function revealCards(){
-document.querySelectorAll('.card').forEach(card=>{
-if(card.getBoundingClientRect().top < window.innerHeight-50){
-card.classList.add('show');
+/* =============================================
+   REVEAL ON SCROLL
+   ============================================= */
+function revealCards() {
+  document.querySelectorAll(".card").forEach(card => {
+    if (card.getBoundingClientRect().top < window.innerHeight - 50) {
+      card.classList.add("show");
+    }
+  });
 }
-});
-}
-window.addEventListener('scroll',revealCards);
+window.addEventListener("scroll", revealCards);
 
-function createDots(total){
-let dots="";
-for(let i=0;i<total;i++){
-dots+=`<span class="dot ${i===0?'active':''}" onclick="goToSlide(this,${i})"></span>`;
-}
-return `<div class="dots">${dots}</div>`;
-}
-
-function render(){
-intervals.forEach(i=>clearInterval(i));
-intervals=[];
-
-let max=parseInt(input.value.replace(/,/g,''))||Infinity;
-let container=document.getElementById("properties");
-container.innerHTML="";
-
-properties.forEach((p)=>{
-if((currentType==="all"||p.type===currentType)&&p.price<=max){
-
-let slides=p.media.map(m=>{
-if(m==="video"){
-return `<div class="slide" style="position:relative;">
-<video class="media" muted autoplay loop playsinline>
-<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
-<div class="play-overlay-icon"><i class="fas fa-expand"></i></div>
-</div>`;
-} else {
-return `<div class="slide"><img class="media" src="${m}" alt=""></div>`;
-}
-}).join("");
-
-container.innerHTML+=`
-<div class="card">
-<div class="slider">
-<div class="slides">${slides}</div>
-${createDots(p.media.length)}
-<button class="arrow" style="left:10px" onclick="moveSlide(this,-1)">❮</button>
-<button class="arrow" style="right:10px" onclick="moveSlide(this,1)">❯</button>
-</div>
-
-<div class="card-content">
-<h3>${p.title}</h3>
-<p class="price">$${formatNumber(p.price)} COP</p>
-<a class="action-btn" href="https://www.google.com/maps?q=${p.location}" target="_blank">Ubicación</a>
-<a class="action-btn" href="https://forms.gle/tuFormularioAqui" target="_blank">Me interesa</a>
-</div>
-</div>`;
-}
-});
-
-setTimeout(()=>{
-initViewer();
-
-/* SLIDER AUTO */
-document.querySelectorAll('.slider').forEach((slider)=>{
-let slides=slider.querySelector('.slides');
-let dots=slider.querySelectorAll('.dot');
-let index=0;
-
-let interval=setInterval(()=>{
-index=(index+1)%slides.children.length;
-slides.style.transform=`translateX(-${index*100}%)`;
-dots.forEach(d=>d.classList.remove('active'));
-dots[index].classList.add('active');
-},4000);
-
-intervals.push(interval);
-});
-
-revealCards();
-},100);
+/* =============================================
+   DOTS
+   ============================================= */
+function createDots(total) {
+  const dots = Array.from({ length: total }, (_, i) =>
+    `<span class="dot ${i === 0 ? "active" : ""}" onclick="goToSlide(this,${i})"></span>`
+  ).join("");
+  return `<div class="dots">${dots}</div>`;
 }
 
-/* ======================================================
-   VISOR UNIFICADO — imágenes con pinch/zoom + videos
-   ====================================================== */
-function initViewer(){
-const viewer     = document.getElementById("viewer");
-const viewerImg  = document.getElementById("viewerImg");
-const viewerVid  = document.getElementById("viewerVideo");
-const controls   = document.getElementById("videoControls");
-const closeBtn   = document.getElementById("viewerClose");
+/* =============================================
+   RENDER PROPIEDADES
+   ============================================= */
+function render() {
+  intervals.forEach(i => clearInterval(i));
+  intervals = [];
 
-/* ---- estado zoom imagen ---- */
-let scale=1, translateX=0, translateY=0;
-let isDragging=false, startX=0, startY=0;
-let initialPinchDist=null, lastScale=1;
+  const max = parseInt(input.value.replace(/,/g, "")) || Infinity;
+  const container = document.getElementById("properties");
+  container.innerHTML = "";
 
-function updateImgTransform(){
-viewerImg.style.transform=`translate(${translateX}px,${translateY}px) scale(${scale})`;
+  const filtered = allProperties.filter(p =>
+    (currentType === "all" || p.type === currentType) && p.price <= max
+  );
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="state-msg">
+      <i class="fas fa-search"></i>
+      No hay propiedades para este filtro.
+    </div>`;
+    return;
+  }
+
+  filtered.forEach(p => {
+    const slides = p.media.map(m => {
+      if (isVideo(m)) {
+        // Se muestra como thumbnail clickeable — NO se precarga el video
+        // Esto permite videos de larga duración sin afectar la carga de la página
+        return `<div class="slide video-thumb-slide" data-video="${m}" style="cursor:pointer;">
+          <div class="video-thumb-box">
+            <i class="fas fa-film video-thumb-icon"></i>
+            <span class="video-thumb-label">Ver video</span>
+          </div>
+          <div class="expand-icon"><i class="fas fa-play"></i></div>
+        </div>`;
+      } else {
+        return `<div class="slide">
+          <img class="media-img" src="${m}" alt="${p.title}" loading="lazy">
+          <div class="expand-icon"><i class="fas fa-search-plus"></i></div>
+        </div>`;
+      }
+    }).join("");
+
+    // Botón WhatsApp con mensaje prellenado
+    const waMsg  = encodeURIComponent(`Hola, me interesa la propiedad: ${p.title} — $${formatNumber(p.price)} COP`);
+    const waLink = `https://wa.me/${p.whatsapp || "573042465513"}?text=${waMsg}`;
+
+    // Botón ubicación
+    const mapsLink = p.location.startsWith("http") ? p.location : `https://www.google.com/maps?q=${encodeURIComponent(p.location)}`;
+
+    const badgeClass = { arriendo: "badge-arriendo", compra: "badge-compra", lote: "badge-lote" }[p.type] || "badge-arriendo";
+    const badgeLabel = { arriendo: "Arriendo", compra: "En venta", lote: "Lote" }[p.type] || p.type;
+
+    container.innerHTML += `
+      <div class="card">
+        <div class="slider">
+          <div class="slides">${slides}</div>
+          ${createDots(p.media.length)}
+          <button class="arrow" style="left:10px" onclick="moveSlide(this,-1)">❮</button>
+          <button class="arrow" style="right:10px" onclick="moveSlide(this,1)">❯</button>
+        </div>
+        <div class="card-content">
+          <div class="card-meta">
+            <span class="card-badge ${badgeClass}">${badgeLabel}</span>
+            <span class="price">$${formatNumber(p.price)} COP</span>
+          </div>
+          <h3>${p.title}</h3>
+          ${p.description ? `
+          <hr class="card-divider">
+          <p class="card-description">
+            <i class="fas fa-info-circle"></i>
+            <span>${p.description}</span>
+          </p>` : ""}
+          <div class="card-actions">
+            <a class="action-btn location" href="${mapsLink}" target="_blank">
+              <i class="fas fa-map-marker-alt"></i> Ubicación
+            </a>
+            <a class="action-btn whatsapp" href="${waLink}" target="_blank">
+              <i class="fab fa-whatsapp"></i> Me interesa
+            </a>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  setTimeout(() => {
+    bindMediaClicks();
+    startAutoSliders();
+    revealCards();
+  }, 100);
 }
 
-function openImage(src){
-viewerVid.pause();
-viewerVid.style.display="none";
-controls.style.display="none";
-viewerImg.src=src;
-viewerImg.style.display="block";
-scale=1;translateX=0;translateY=0;
-updateImgTransform();
-viewer.classList.add("active");
+/* =============================================
+   CLICKS EN MEDIOS → VISOR
+   ============================================= */
+function bindMediaClicks() {
+  document.querySelectorAll(".media-img").forEach(el => {
+    el.addEventListener("click", () => openImage(el.src));
+  });
+
+  // Videos: el slide completo es clickeable (thumbnail estático)
+  document.querySelectorAll(".video-thumb-slide").forEach(slide => {
+    const src = slide.getAttribute("data-video");
+    slide.addEventListener("click", () => openVideo(src));
+  });
 }
 
-function openVideo(src){
-viewerImg.style.display="none";
-viewerVid.src=src;
-viewerVid.style.display="block";
-controls.style.display="flex";
-viewerVid.play();
-viewer.classList.add("active");
+/* =============================================
+   AUTO SLIDER
+   ============================================= */
+function startAutoSliders() {
+  document.querySelectorAll(".slider").forEach(slider => {
+    const slides = slider.querySelector(".slides");
+    const dots   = slider.querySelectorAll(".dot");
+    let index    = 0;
+
+    const interval = setInterval(() => {
+      index = (index + 1) % slides.children.length;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(d => d.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }, 4000);
+
+    intervals.push(interval);
+  });
 }
 
-function closeViewer(){
-viewer.classList.remove("active");
-viewerVid.pause();
-viewerVid.src="";
-viewerImg.src="";
+/* =============================================
+   SLIDER MANUAL
+   ============================================= */
+function moveSlide(btn, dir) {
+  const slider = btn.parentElement;
+  const slides = slider.querySelector(".slides");
+  const dots   = slider.querySelectorAll(".dot");
+  const total  = slides.children.length;
+  let index    = slides.dataset.index ? parseInt(slides.dataset.index) : 0;
+
+  index = (index + dir + total) % total;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+  slides.dataset.index   = index;
+  dots.forEach(d => d.classList.remove("active"));
+  if (dots[index]) dots[index].classList.add("active");
 }
 
-/* Cerrar con botón o click en fondo */
-closeBtn.addEventListener('click', closeViewer);
-viewer.addEventListener('click',(e)=>{
-if(e.target===viewer) closeViewer();
-});
+function goToSlide(dot, i) {
+  const slider = dot.closest(".slider");
+  const slides = slider.querySelector(".slides");
+  const dots   = slider.querySelectorAll(".dot");
 
-/* Tecla Escape */
-document.addEventListener('keydown',(e)=>{
-if(e.key==="Escape") closeViewer();
-});
-
-/* ---- clicks en medios de las cards ---- */
-document.querySelectorAll('.media').forEach(el=>{
-if(el.tagName==="IMG"){
-el.addEventListener('click',()=> openImage(el.src));
-}
-if(el.tagName==="VIDEO"){
-// click en el slide abre el visor
-el.addEventListener('click',()=>{
-openVideo(el.querySelector('source')
-? el.querySelector('source').src
-: el.src);
-});
-// también el icono expand
-const icon = el.closest('.slide').querySelector('.play-overlay-icon');
-if(icon){
-icon.style.pointerEvents="auto";
-icon.addEventListener('click',()=>{
-openVideo(el.querySelector('source')
-? el.querySelector('source').src
-: el.src);
-});
-}
-}
-});
-
-/* ======== ZOOM IMAGEN — MOUSE ======== */
-viewer.addEventListener('wheel',(e)=>{
-if(viewerImg.style.display==="none") return;
-e.preventDefault();
-scale += e.deltaY * -0.001;
-scale=Math.min(Math.max(0.5,scale),6);
-updateImgTransform();
-},{passive:false});
-
-viewerImg.addEventListener('mousedown',(e)=>{
-if(scale<=1){translateX=0;translateY=0;}
-isDragging=true;
-startX=e.clientX-translateX;
-startY=e.clientY-translateY;
-viewerImg.style.cursor="grabbing";
-e.preventDefault();
-});
-
-window.addEventListener('mouseup',()=>{
-isDragging=false;
-viewerImg.style.cursor="grab";
-});
-
-window.addEventListener('mousemove',(e)=>{
-if(!isDragging||viewerImg.style.display==="none") return;
-translateX=e.clientX-startX;
-translateY=e.clientY-startY;
-updateImgTransform();
-});
-
-/* ======== ZOOM IMAGEN — TOUCH ======== */
-viewerImg.addEventListener('touchstart',(e)=>{
-if(e.touches.length===2){
-initialPinchDist=getPinchDist(e.touches);
-lastScale=scale;
-} else if(e.touches.length===1){
-isDragging=true;
-startX=e.touches[0].clientX-translateX;
-startY=e.touches[0].clientY-translateY;
-}
-},{passive:false});
-
-viewerImg.addEventListener('touchmove',(e)=>{
-e.preventDefault();
-if(e.touches.length===2){
-const dist=getPinchDist(e.touches);
-scale=lastScale*(dist/initialPinchDist);
-scale=Math.min(Math.max(0.5,scale),6);
-updateImgTransform();
-} else if(e.touches.length===1 && isDragging){
-translateX=e.touches[0].clientX-startX;
-translateY=e.touches[0].clientY-startY;
-updateImgTransform();
-}
-},{passive:false});
-
-viewerImg.addEventListener('touchend',()=>{
-isDragging=false;
-initialPinchDist=null;
-if(scale<1){scale=1;translateX=0;translateY=0;updateImgTransform();}
-});
-
-/* Doble tap para reset zoom */
-let lastTap=0;
-viewerImg.addEventListener('touchend',(e)=>{
-const now=Date.now();
-if(now-lastTap<300){
-scale=1;translateX=0;translateY=0;updateImgTransform();
-}
-lastTap=now;
-});
-
-function getPinchDist(touches){
-const dx=touches[0].clientX-touches[1].clientX;
-const dy=touches[0].clientY-touches[1].clientY;
-return Math.sqrt(dx*dx+dy*dy);
+  slides.style.transform = `translateX(-${i * 100}%)`;
+  slides.dataset.index   = i;
+  dots.forEach(d => d.classList.remove("active"));
+  dots[i].classList.add("active");
 }
 
-/* ======== CONTROLES DE VIDEO ======== */
-const vcPlayPause  = document.getElementById("vcPlayPause");
-const vcProgress   = document.getElementById("vcProgress");
-const vcTime       = document.getElementById("vcTime");
-const vcMute       = document.getElementById("vcMute");
-const vcFullscreen = document.getElementById("vcFullscreen");
-
-function fmtTime(s){
-const m=Math.floor(s/60);
-const sec=Math.floor(s%60).toString().padStart(2,'0');
-return `${m}:${sec}`;
+/* =============================================
+   FILTRO POR TIPO
+   ============================================= */
+function setType(type, btn) {
+  currentType = type;
+  document.querySelectorAll(".btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
 }
 
-vcPlayPause.addEventListener('click',()=>{
-if(viewerVid.paused){
-viewerVid.play();
-vcPlayPause.innerHTML='<i class="fas fa-pause"></i>';
-} else {
-viewerVid.pause();
-vcPlayPause.innerHTML='<i class="fas fa-play"></i>';
-}
-});
+/* =============================================
+   VISOR — IMAGEN + VIDEO
+   ============================================= */
+(function initViewer() {
+  const viewer    = document.getElementById("viewer");
+  const viewerImg = document.getElementById("viewerImg");
+  const viewerVid = document.getElementById("viewerVideo");
+  const controls  = document.getElementById("videoControls");
+  const closeBtn  = document.getElementById("viewerClose");
 
-viewerVid.addEventListener('timeupdate',()=>{
-if(!viewerVid.duration) return;
-vcProgress.max=viewerVid.duration;
-vcProgress.value=viewerVid.currentTime;
-vcTime.textContent=fmtTime(viewerVid.currentTime)+' / '+fmtTime(viewerVid.duration);
-});
+  /* ---- estado zoom imagen ---- */
+  let scale = 1, translateX = 0, translateY = 0;
+  let isDragging = false, startX = 0, startY = 0;
+  let initialPinchDist = null, lastScale = 1;
+  let lastTap = 0;
 
-vcProgress.addEventListener('input',()=>{
-viewerVid.currentTime=vcProgress.value;
-});
+  function updateImgTransform() {
+    viewerImg.style.transform = `translate(${translateX}px,${translateY}px) scale(${scale})`;
+  }
 
-vcMute.addEventListener('click',()=>{
-viewerVid.muted=!viewerVid.muted;
-vcMute.innerHTML=viewerVid.muted
-? '<i class="fas fa-volume-mute"></i>'
-: '<i class="fas fa-volume-up"></i>';
-});
+  /* --- abrir / cerrar --- */
+  window.openImage = function(src) {
+    viewerVid.pause();
+    viewerVid.style.display  = "none";
+    controls.style.display   = "none";
+    viewerImg.src             = src;
+    viewerImg.style.display  = "block";
+    scale = 1; translateX = 0; translateY = 0;
+    updateImgTransform();
+    viewer.classList.add("active");
+    document.body.style.overflow = "hidden";
+  };
 
-vcFullscreen.addEventListener('click',()=>{
-if(viewerVid.requestFullscreen) viewerVid.requestFullscreen();
-else if(viewerVid.webkitEnterFullscreen) viewerVid.webkitEnterFullscreen();
-});
+  window.openVideo = function(src) {
+    viewerImg.style.display  = "none";
+    viewerVid.src             = src;
+    viewerVid.style.display  = "block";
+    controls.style.display   = "flex";
+    vcPlayPause.innerHTML    = '<i class="fas fa-pause"></i>';
+    viewerVid.play();
+    viewer.classList.add("active");
+    document.body.style.overflow = "hidden";
+  };
 
-viewerVid.addEventListener('ended',()=>{
-vcPlayPause.innerHTML='<i class="fas fa-play"></i>';
-});
+  function closeViewer() {
+    viewer.classList.remove("active");
+    viewerVid.pause();
+    viewerVid.src = "";
+    viewerImg.src = "";
+    document.body.style.overflow = "";
+  }
 
-/* ======== SWIPE TOUCH sobre el VIDEO en visor para cerrar ======== */
-let touchStartY=0;
-viewerVid.addEventListener('touchstart',(e)=>{
-touchStartY=e.touches[0].clientY;
-},{passive:true});
-viewerVid.addEventListener('touchend',(e)=>{
-const dy=e.changedTouches[0].clientY-touchStartY;
-if(Math.abs(dy)>80) closeViewer();
-},{passive:true});
-}
+  closeBtn.addEventListener("click", closeViewer);
+  viewer.addEventListener("click", e => { if (e.target === viewer) closeViewer(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeViewer(); });
 
-function moveSlide(btn,dir){
-let slider=btn.parentElement;
-let slides=slider.querySelector('.slides');
-let dots=slider.querySelectorAll('.dot');
-let total=slides.children.length;
-let index=slides.dataset.index?parseInt(slides.dataset.index):0;
+  /* ---- zoom imagen mouse ---- */
+  viewer.addEventListener("wheel", e => {
+    if (viewerImg.style.display === "none") return;
+    e.preventDefault();
+    scale += e.deltaY * -0.001;
+    scale  = Math.min(Math.max(0.5, scale), 6);
+    updateImgTransform();
+  }, { passive: false });
 
-index=(index+dir+total)%total;
+  viewerImg.addEventListener("mousedown", e => {
+    isDragging = true;
+    startX = e.clientX - translateX;
+    startY = e.clientY - translateY;
+    viewerImg.style.cursor = "grabbing";
+    e.preventDefault();
+  });
 
-slides.style.transform=`translateX(-${index*100}%)`;
-slides.dataset.index=index;
+  window.addEventListener("mouseup",   () => { isDragging = false; viewerImg.style.cursor = "grab"; });
+  window.addEventListener("mousemove", e => {
+    if (!isDragging || viewerImg.style.display === "none") return;
+    translateX = e.clientX - startX;
+    translateY = e.clientY - startY;
+    updateImgTransform();
+  });
 
-dots.forEach(d=>d.classList.remove('active'));
-dots[index].classList.add('active');
-}
+  /* ---- zoom imagen touch (pinch) ---- */
+  viewerImg.addEventListener("touchstart", e => {
+    if (e.touches.length === 2) {
+      initialPinchDist = getPinchDist(e.touches);
+      lastScale = scale;
+    } else if (e.touches.length === 1) {
+      isDragging = true;
+      startX = e.touches[0].clientX - translateX;
+      startY = e.touches[0].clientY - translateY;
+    }
+  }, { passive: false });
 
-function goToSlide(dot,i){
-let slider=dot.closest('.slider');
-let slides=slider.querySelector('.slides');
-let dots=slider.querySelectorAll('.dot');
+  viewerImg.addEventListener("touchmove", e => {
+    e.preventDefault();
+    if (e.touches.length === 2) {
+      const dist = getPinchDist(e.touches);
+      scale      = lastScale * (dist / initialPinchDist);
+      scale      = Math.min(Math.max(0.5, scale), 6);
+      updateImgTransform();
+    } else if (e.touches.length === 1 && isDragging) {
+      translateX = e.touches[0].clientX - startX;
+      translateY = e.touches[0].clientY - startY;
+      updateImgTransform();
+    }
+  }, { passive: false });
 
-slides.style.transform=`translateX(-${i*100}%)`;
-slides.dataset.index=i;
+  viewerImg.addEventListener("touchend", e => {
+    isDragging = false;
+    initialPinchDist = null;
+    if (scale < 1) { scale = 1; translateX = 0; translateY = 0; updateImgTransform(); }
 
-dots.forEach(d=>d.classList.remove('active'));
-dots[i].classList.add('active');
-}
+    /* doble tap → reset zoom */
+    const now = Date.now();
+    if (now - lastTap < 300) { scale = 1; translateX = 0; translateY = 0; updateImgTransform(); }
+    lastTap = now;
+  });
 
-function setType(type,btn){
-currentType=type;
-document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-render();
-}
+  function getPinchDist(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
 
-render();
+  /* ---- controles video ---- */
+  const vcPlayPause  = document.getElementById("vcPlayPause");
+  const vcProgress   = document.getElementById("vcProgress");
+  const vcTime       = document.getElementById("vcTime");
+  const vcMute       = document.getElementById("vcMute");
+  const vcFullscreen = document.getElementById("vcFullscreen");
+
+  vcPlayPause.addEventListener("click", () => {
+    if (viewerVid.paused) {
+      viewerVid.play();
+      vcPlayPause.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+      viewerVid.pause();
+      vcPlayPause.innerHTML = '<i class="fas fa-play"></i>';
+    }
+  });
+
+  viewerVid.addEventListener("timeupdate", () => {
+    if (!viewerVid.duration) return;
+    vcProgress.max   = viewerVid.duration;
+    vcProgress.value = viewerVid.currentTime;
+    vcTime.textContent = fmtTime(viewerVid.currentTime) + " / " + fmtTime(viewerVid.duration);
+  });
+
+  vcProgress.addEventListener("input", () => { viewerVid.currentTime = vcProgress.value; });
+
+  vcMute.addEventListener("click", () => {
+    viewerVid.muted = !viewerVid.muted;
+    vcMute.innerHTML = viewerVid.muted
+      ? '<i class="fas fa-volume-mute"></i>'
+      : '<i class="fas fa-volume-up"></i>';
+  });
+
+  vcFullscreen.addEventListener("click", () => {
+    if (viewerVid.requestFullscreen) viewerVid.requestFullscreen();
+    else if (viewerVid.webkitEnterFullscreen) viewerVid.webkitEnterFullscreen();
+  });
+
+  viewerVid.addEventListener("ended", () => {
+    vcPlayPause.innerHTML = '<i class="fas fa-play"></i>';
+  });
+
+  /* swipe vertical en video → cerrar */
+  let touchStartY = 0;
+  viewerVid.addEventListener("touchstart", e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+  viewerVid.addEventListener("touchend",   e => {
+    if (Math.abs(e.changedTouches[0].clientY - touchStartY) > 80) closeViewer();
+  }, { passive: true });
+})();
+
+/* =============================================
+   ARRANCAR
+   ============================================= */
+loadProperties();
 </script>
 
 </body>
