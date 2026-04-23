@@ -51,19 +51,5 @@
       "assets/media/images/imagen3.png",
       "assets/media/videos/video-tiktok.mp4"
     ]
-  },
-   {
-    "type": "compra",
-    "price": 200000000,
-    "title": "Casa en Sincelejo disponible",
-    "location": "https://www.google.com/maps/@9.3122791,-75.3864494,3a,75y,118.77h,76.43t/data=!3m7!1e1!3m5!1sGMU-DZ7CrSXgQ5q3kmSNcA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D13.571951375110771%26panoid%3DGMU-DZ7CrSXgQ5q3kmSNcA%26yaw%3D118.766002424241!7i13312!8i6656?entry=ttu&g_ep=EgoyMDI2MDQyMS4wIKXMDSoASAFQAw%3D%3D",
-    "description": "Casa de 2 pisos 200m² en zona de alta valorización.",
-    "whatsapp": "573042465513",
-    "media": [
-      "assets/media/images/imagen1.jpg",
-      "assets/media/images/imagen2.jpg",
-      "assets/media/images/imagen3.png",
-      "assets/media/videos/video-tiktok.mp4"
-    ]
-  } 
+  }
 ]
